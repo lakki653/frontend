@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-<style>
-    * {
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -46,6 +47,7 @@ body {
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.7);
     font-size: 18px;
+    z-index: 1;
 }
 
 .input-group input {
@@ -87,6 +89,65 @@ body {
     transform: translateY(-2px);
 }
 
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.divider span {
+    background: transparent;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.google-btn img {
+    width: 18px;
+    height: 18px;
+}
+
 .form-footer {
     display: flex;
     justify-content: space-between;
@@ -114,13 +175,9 @@ body {
 
 .forgot-password:hover {
     color: white;
-}
-</style>
-    
+}</style>
 </head>
-
 <body>
-
     <div class="container">
         <form class="signin-form">
             <div class="input-group">
@@ -132,6 +189,20 @@ body {
                 <input type="password" placeholder="Password" required>
             </div>
             <button type="submit" class="signin-btn">Sign In</button>
+            
+            <div class="divider">
+                <span>or</span>
+            </div>
+            
+            <div id="g_id_onload"
+                data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-callback="handleCredentialResponse">
+            </div>
+            <button type="button" class="google-btn" id="googleBtn">
+                <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="Google Logo">
+                Continue with Google
+            </button>
+            
             <div class="form-footer">
                 <label class="remember-me">
                     <input type="checkbox">
@@ -141,6 +212,6 @@ body {
             </div>
         </form>
     </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
