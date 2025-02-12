@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" href="admin">
+    <link rel="stylesheet" href="student">
+    <link rel="stylesheet" href="teacher">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(bg.jpg);
-    background-size: cover;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
 }
 
 .container {
@@ -138,6 +140,7 @@ body {
                 <span class="icon">👥</span>
                 <select required>
                     <option value="" disabled selected>Select Role</option>
+                    <option value="Admin">Admin</option>
                     <option value="Student">Student</option>
                     <option value="Professor">Professor</option>
                 </select>
